@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="11.692063mm"
+   height="11.692063mm"
+   viewBox="0 0 41.428571 41.428571"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   inkscape:export-filename="/home/zemanek/git/wahlen-bonn.de/favicon.png"
+   inkscape:export-xdpi="69.519997"
+   inkscape:export-ydpi="69.519997"
+   sodipodi:docname="favicon.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="-11.574577"
+     inkscape:cy="-47.517416"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1002"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-259.28572,-425.57649)">
+    <circle
+       style="opacity:1;fill:#ffbb00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4136"
+       cx="280"
+       cy="446.29077"
+       r="20.714285" />
+    <circle
+       r="12.488212"
+       cy="446.29077"
+       cx="280"
+       id="circle4138"
+       style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 267.75355,457.88743 c 2.38892,-0.79328 4.24403,-2.55785 6.32902,-3.88961 1.24566,-1.22438 3.0171,-1.79462 4.08912,-3.21724 1.75666,-1.63052 3.394,-3.4211 5.45071,-4.68927 1.33518,-1.08397 2.74791,-2.06361 4.14108,-3.06955 1.07726,-0.95845 2.21973,-1.82326 3.45665,-2.5669 1.00867,-0.70806 1.83104,-1.64413 2.79739,-2.39167"
+       id="path4140"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 268.06923,434.84333 c 0.5496,1.48285 1.87208,2.48414 2.66703,3.82694 0.96158,1.41598 2.40532,2.36967 3.54111,3.63079 1.45775,1.40688 2.79613,2.92926 4.25758,4.32685 1.1016,1.37424 2.06132,2.84651 3.11319,4.26015 1.22123,1.72587 2.51688,3.39887 3.70921,5.14635 1.21838,1.0539 2.48237,2.36276 2.90323,3.92715 0.40747,0.72159 1.10629,1.75908 1.14813,2.28216"
+       id="path4142"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>
