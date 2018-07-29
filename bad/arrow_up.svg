@@ -28,7 +28,7 @@
      id="layer1"
      transform="translate(0,-292.4139)">
     <path
-       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.28155863;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.28155863;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
        d="m 2.6553683,297.00001 0,-2.34136 H 3.5277778 L 1.7640382,292.41506 0,294.65865 h 0.8727079 v 2.34136 z"
        id="rect1385"/>
   </g>

@@ -2,8 +2,10 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
     <title>Bürgerentscheid »Zentralbad stoppen!«</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../fonts/fonts.css">
     <style>
         * {
             box-sizing: border-box;
@@ -18,9 +20,9 @@
         }
 
         body {
-            background-color: #2b0022;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 0.5rem;
+            background-color: #ffbb00;
+            font-family: 'Archivo', sans-serif;
         }
 
         div {
@@ -74,7 +76,7 @@
         #result-ja,
         #result-nein {
             width: 50%;
-            font-size: 5rem;
+            font-size: 3rem;
             font-weight: bold;
             display: flex;
             justify-content: center;
@@ -131,6 +133,7 @@
             background-color: #a00;
             display: flex;
             padding: 0.2rem;
+            color: white;
         }
 
         #quorum-left {
@@ -146,12 +149,24 @@
             justify-content: flex-end;
             flex: 1;
         }
+
+        #backlink {
+            text-align: center;
+        }
+
+        a {
+            color: black;
+        }
     </style>
 </head>
 
 <body>
     <div id="wrapper">
         <h1>Bürgerentscheid »Zentralbad stoppen!«</h1>
+        <div id="backlink">
+            <a href="../">zurück</a> ·
+            <a href="https://www.bonn.de/rat_verwaltung_buergerdienste/topthemen/18348/index.html">bonn.de</a>
+        </div>
         <div>
             <hr>
         </div>
@@ -261,7 +276,7 @@
                         makeCorsRequest('bridge.php', function (data) {
                             updateStats(data, oldDataMap);
                         });
-                    }, 5000);
+                    }, 10000);
                 }
             });
         }
@@ -286,7 +301,7 @@
                 }
             }
             let total = sum_ja + sum_nein;
-            
+
             document.getElementById("counted").innerHTML = "(" + counted + "/" + to_count + ")";
 
             document.getElementById("result-ja").style.width = (sum_ja / total * 100).toString() + "%";
