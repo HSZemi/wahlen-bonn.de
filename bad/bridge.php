@@ -1,0 +1,38 @@
+<?php 
+//print(file_get_contents("http://wahlen.bonn.de/wahlen/BEKB/05314000/html5/Buergerentscheid_NRW386.csv"));
+print("Nr;Name;MaxSchnellmeldungen;AnzSchnellmeldungen;Wahlberechtigte;abgegeben;Wahlbeteiligung;gültigeStimmzettel;gültig;ungültigeStimmzettel;ungültig;Ja;Ja_Proz;Nein;Nein_Proz;
+010;Briefwahlbezirk 010;1;1;8311;;;;;;;;;;;
+020;Briefwahlbezirk 020;1;1;7004;;;;;;;;;;;
+030;Briefwahlbezirk 030;1;1;8145;;;;;;;;;;;
+040;Briefwahlbezirk 040;1;1;8002;;;;;;;;;;;
+050;Briefwahlbezirk 050;1;1;7215;;;;;;;;;;;
+060;Briefwahlbezirk 060;1;1;8049;;;;;;;;;;;
+070;Briefwahlbezirk 070;1;1;6558;;;;;;;;;;;
+080;Briefwahlbezirk 080;1;1;6733;;;;;;;;;;;
+090;Briefwahlbezirk 090;1;1;6143;;;;;;;;;;;
+100;Briefwahlbezirk 100;1;1;6777;;;;;;;;;;;
+110;Briefwahlbezirk 110;1;1;8049;;;;;;;;;;;
+120;Briefwahlbezirk 120;1;1;7866;;;;;;;;;;;
+130;Briefwahlbezirk 130;1;1;6299;;;;;;;;;;;
+140;Briefwahlbezirk 140;1;1;6678;;;;;;;;;;;
+150;Briefwahlbezirk 150;1;1;7018;;;;;;;;;;;
+160;Briefwahlbezirk 160;1;1;6259;;;;;;;;;;;
+210;Briefwahlbezirk 210;1;1;6334;;;;;;;;;;;
+220;Briefwahlbezirk 220;1;1;8312;;;;;;;;;;;
+230;Briefwahlbezirk 230;1;1;9111;;;;;;;;;;;
+240;Briefwahlbezirk 240;1;1;7540;;;;;;;;;;;
+250;Briefwahlbezirk 250;1;1;6192;;;;;;;;;;;
+260;Briefwahlbezirk 260;1;1;8063;;;;;;;;;;;
+270;Briefwahlbezirk 270;1;1;8484;;;;;;;;;;;
+310;Briefwahlbezirk 310;1;1;6585;;;;;;;;;;;
+320;Briefwahlbezirk 320;1;1;7056;;;;;;;;;;;
+330;Briefwahlbezirk 330;1;1;6047;;;;;;;;;;;
+340;Briefwahlbezirk 340;1;1;8376;;;;;;;;;;;
+350;Briefwahlbezirk 350;1;1;8382;;;;;;;;;;;
+360;Briefwahlbezirk 360;1;1;9390;;;;;;;;;;;
+370;Briefwahlbezirk 370;1;1;8100;;;;;;;;;;;
+410;Briefwahlbezirk 410;1;1;8443;;;;;;;;;;;
+420;Briefwahlbezirk 420;1;1;8962;;;;;;;;;;;
+430;Briefwahlbezirk 430;1;1;8012;;;;;;;;;;;
+");
+?>

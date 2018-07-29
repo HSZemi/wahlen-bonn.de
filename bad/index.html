@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Bürgerentscheid »Zentralbad stoppen!«</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #2b0022;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        div {
+            transition: width 2s, min-width 2s;
+        }
+
+        #wrapper {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #prognose {
+            width: 100%;
+        }
+
+        #prognose,
+        #prognose-bars,
+        #quorum,
+        #bottom {
+            display: flex;
+        }
+
+        #bottom {
+            height: auto;
+            flex: 1;
+        }
+
+        .bar {
+            min-height: 1rem;
+            display: inline-block;
+        }
+
+        #bar-prognose-ja {
+            background-color: #a00;
+        }
+
+        #bar-prognose-ja-expected {
+            background-color: #dd9b9b;
+        }
+
+        #bar-prognose-nein {
+            background-color: #00aad4;
+        }
+
+        #bar-prognose-nein-expected {
+            background-color: #9bddee;
+        }
+
+        #result-ja,
+        #result-nein {
+            width: 50%;
+            font-size: 5rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        #result-ja {
+            background-color: #a00;
+        }
+
+        #result-nein {
+            background-color: #00aad4;
+        }
+
+
+        h1,
+        h2 {
+            text-align: center;
+            margin: 0.2rem;
+        }
+
+        #indicator {
+            text-align: center;
+            padding-top: 0.2rem;
+        }
+
+        hr {
+            border: 0;
+            border-bottom: 1px dashed #660080;
+        }
+
+        #prognose>div {
+            flex: 1;
+        }
+
+        #prognose-ja {
+            font-size: 1.2rem;
+            padding-left: .5rem;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+        }
+
+        #prognose-nein {
+            font-size: 1.2rem;
+            padding-right: .5rem;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+
+        #quorum-bar {
+            background-color: #a00;
+            display: flex;
+            padding: 0.2rem;
+        }
+
+        #quorum-left {
+            display: flex;
+            padding-left: .5rem;
+            justify-content: flex-start;
+        }
+
+        #quorum-right {
+            display: flex;
+            padding-left: .5rem;
+            padding-right: .5rem;
+            justify-content: flex-end;
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <h1>Bürgerentscheid »Zentralbad stoppen!«</h1>
+        <div>
+            <hr>
+        </div>
+        <div id="prognose">
+            <div id="prognose-ja"></div>
+            <div>
+                <h2>Prognose</h2>
+                <div id="indicator">
+                    <img src="arrow_down.svg" />
+                </div>
+            </div>
+            <div id="prognose-nein"></div>
+        </div>
+        <div id="prognose-bars">
+            <div class="bar" id="bar-prognose-ja"></div>
+            <div class="bar" id="bar-prognose-ja-expected"></div>
+            <div class="bar" id="bar-prognose-nein-expected"></div>
+            <div class="bar" id="bar-prognose-nein"></div>
+        </div>
+        <div id="indicator">
+            <img src="arrow_up.svg" />
+        </div>
+        <div>
+            <hr>
+        </div>
+        <h2>Auszählstand
+            <span id="counted"></span>
+        </h2>
+
+        <div id="indicator">
+            <img src="arrow_down.svg" />
+        </div>
+        <div id="bottom">
+            <div id="result-ja"></div>
+            <div id="result-nein"></div>
+        </div>
+
+        <div id="indicator">
+            <img src="arrow_up.svg" />
+        </div>
+        <div>
+            <hr>
+        </div>
+        <div id="quorum">
+            <div class="bar" id="quorum-bar">
+                <div id="quorum-left">Quorum – „Ja“ von 10 % der Wahlberechtigten</div>
+                <div id="quorum-right"></div>
+            </div>
+        </div>
+        <div>
+            <hr>
+        </div>
+    </div>
+
+    <script src="d3.v5.min.js"></script>
+    <script type="text/javascript">
+
+        function makeCorsRequest(url, callback) {
+            var xhr = new XMLHttpRequest();
+            if ("withCredentials" in xhr) {
+                xhr.open('GET', url, true);
+            } else if (typeof XDomainRequest != "undefined") {
+                xhr = new XDomainRequest();
+                xhr.open('GET', url);
+            } else {
+                xhr = null;
+            }
+            if (!xhr) {
+                return;
+            }
+
+            xhr.onload = function () {
+                let format = d3.dsvFormat(";");
+                var text = xhr.responseText;
+                callback(format.parse(text));
+            };
+
+            xhr.onerror = function () {
+                // fail silently
+            };
+
+            xhr.send();
+        }
+
+        function formatPercent(number) {
+            if (isNaN(number)) {
+                return "– %";
+            }
+            let value = "" + Math.round(number * 1000) / 10 + " %";
+            return value.replace(".", ",");
+        }
+
+        function init() {
+            makeCorsRequest('Buergerentscheid_NRW386.csv', function (oldData) {
+
+                let oldDataMap = new Map();
+                for (let row of oldData) {
+                    oldDataMap.set(row.Nr, row);
+                }
+
+                makeCorsRequest('bridge.php', function (data) {
+                    updateStats(data, oldDataMap);
+                });
+
+                if (window.location.hash !== "#static") {
+                    setInterval(function () {
+                        makeCorsRequest('bridge.php', function (data) {
+                            updateStats(data, oldDataMap);
+                        });
+                    }, 5000);
+                }
+            });
+        }
+
+        window.onload = function () {
+            init();
+        }
+
+        function updateStats(data, oldDataMap) {
+            let sum_ja = 0;
+            let sum_nein = 0;
+            let sum_abstimmungsberechtigte = 0;
+            let counted = 0;
+            let to_count = 0;
+            for (let row of data) {
+                sum_abstimmungsberechtigte += parseInt(row.Wahlberechtigte);
+                to_count++;
+                if (row.Ja !== "" && row.Nein !== "") {
+                    sum_ja += parseInt(row.Ja);
+                    sum_nein += parseInt(row.Nein);
+                    counted++;
+                }
+            }
+            let total = sum_ja + sum_nein;
+            
+            document.getElementById("counted").innerHTML = "(" + counted + "/" + to_count + ")";
+
+            document.getElementById("result-ja").style.width = (sum_ja / total * 100).toString() + "%";
+            document.getElementById("result-ja").innerHTML = formatPercent(sum_ja / total);
+
+            document.getElementById("result-nein").style.width = (sum_nein / total * 100).toString() + "%";
+            document.getElementById("result-nein").innerHTML = formatPercent(sum_nein / total);
+
+            document.getElementById("quorum-bar").style.minWidth = Math.min(100, (sum_ja / sum_abstimmungsberechtigte * 1000)).toString() + "%";
+            document.getElementById("quorum-right").innerHTML = formatPercent(sum_ja / sum_abstimmungsberechtigte);
+
+
+            let sum_ja_x = 0;
+            let sum_nein_x = 0;
+            for (let row of data) {
+                if (row.Ja !== "" && row.Nein !== "") {
+                    sum_ja_x += parseInt(row.Ja);
+                    sum_nein_x += parseInt(row.Nein);
+                } else {
+                    sum_ja_x += parseInt(oldDataMap.get(row.Nr).Ja);
+                    sum_nein_x += parseInt(oldDataMap.get(row.Nr).Nein);
+                }
+            }
+            let total_x = sum_ja_x + sum_nein_x;
+
+            document.getElementById("bar-prognose-ja").style.width = "" + (sum_ja / total_x * 100) + "%";
+            document.getElementById("bar-prognose-ja-expected").style.width = "" + (sum_ja_x / total_x * 100) - (sum_ja / total_x * 100) + "%";
+            document.getElementById("prognose-ja").innerHTML = formatPercent(sum_ja_x / total_x);
+
+            document.getElementById("bar-prognose-nein").style.width = "" + (sum_nein / total_x * 100) + "%";
+            document.getElementById("bar-prognose-nein-expected").style.width = "" + (sum_nein_x / total_x * 100) - (sum_nein / total_x * 100) + "%";
+            document.getElementById("prognose-nein").innerHTML = formatPercent(sum_nein_x / total_x);
+        }
+    </script>
+</body>
+
+</html>
