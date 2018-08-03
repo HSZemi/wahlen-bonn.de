@@ -300,10 +300,7 @@
                 oldDataMapCopy.get(key).Nein = "";
             }
             for (let row of data) {
-                oldDataMapCopy.get(row.Nr).AnzSchnellmeldungen = row.AnzSchnellmeldungen;
-                oldDataMapCopy.get(row.Nr).abgegeben = row.abgegeben;
-                oldDataMapCopy.get(row.Nr).Ja = row.Ja;
-                oldDataMapCopy.get(row.Nr).Nein = row.Nein;
+                oldDataMapCopy.set(row.Nr, row);
             }
             let keys = Array.from(oldDataMapCopy.keys()).sort();
             for (let key of keys) {
