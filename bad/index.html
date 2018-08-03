@@ -286,12 +286,28 @@
         }
 
         function updateStats(data, oldDataMap) {
+            let oldDataMapCopy = new Map(oldDataMap);
             let sum_ja = 0;
             let sum_nein = 0;
             let sum_abstimmungsberechtigte = 0;
             let counted = 0;
             let to_count = 0;
+            for (let key of oldDataMapCopy.keys()) {
+                oldDataMapCopy.set(key, JSON.parse(JSON.stringify(oldDataMapCopy.get(key))));
+                oldDataMapCopy.get(key).AnzSchnellmeldungen = 0;
+                oldDataMapCopy.get(key).abgegeben = "";
+                oldDataMapCopy.get(key).Ja = "";
+                oldDataMapCopy.get(key).Nein = "";
+            }
             for (let row of data) {
+                oldDataMapCopy.get(row.Nr).AnzSchnellmeldungen = row.AnzSchnellmeldungen;
+                oldDataMapCopy.get(row.Nr).abgegeben = row.abgegeben;
+                oldDataMapCopy.get(row.Nr).Ja = row.Ja;
+                oldDataMapCopy.get(row.Nr).Nein = row.Nein;
+            }
+            let keys = Array.from(oldDataMapCopy.keys()).sort();
+            for (let key of keys) {
+                let row = oldDataMapCopy.get(key);
                 sum_abstimmungsberechtigte += parseInt(row.Wahlberechtigte);
                 to_count++;
                 if (row.Ja !== "" && row.Nein !== "") {
@@ -316,7 +332,8 @@
 
             let sum_ja_x = 0;
             let sum_nein_x = 0;
-            for (let row of data) {
+            for (let key of keys) {
+                let row = oldDataMapCopy.get(key);
                 if (row.Ja !== "" && row.Nein !== "") {
                     sum_ja_x += parseInt(row.Ja);
                     sum_nein_x += parseInt(row.Nein);
