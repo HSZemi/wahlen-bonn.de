@@ -323,10 +323,10 @@
             document.getElementById("counted").innerHTML = "(" + counted + "/" + to_count + ")";
 
             document.getElementById("result-ja").style.width = (sum_ja / total * 100).toString() + "%";
-            document.getElementById("result-ja").innerHTML = formatPercent(sum_ja / total);
+            document.getElementById("result-ja").innerHTML = "Ja<br>"+formatPercent(sum_ja / total);
 
             document.getElementById("result-nein").style.width = (sum_nein / total * 100).toString() + "%";
-            document.getElementById("result-nein").innerHTML = formatPercent(sum_nein / total);
+            document.getElementById("result-nein").innerHTML = "Nein<br>"+formatPercent(sum_nein / total);
 
             document.getElementById("quorum-bar").style.minWidth = Math.min(100, (sum_ja / sum_abstimmungsberechtigte * 1000)).toString() + "%";
             document.getElementById("quorum-right").innerHTML = formatPercent(sum_ja / sum_abstimmungsberechtigte);
