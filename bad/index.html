@@ -300,7 +300,12 @@
                 oldDataMapCopy.get(key).Nein = "";
             }
             for (let row of data) {
+                let abstimmungsberechtigte = row.Wahlberechtigte;
+                let abstimmungsberechtigte_old = oldDataMapCopy.get(row.Nr).Wahlberechtigte;
                 oldDataMapCopy.set(row.Nr, row);
+                if(row.Wahlberechtigte === "0"){
+                    oldDataMapCopy.get(row.Nr).Wahlberechtigte = abstimmungsberechtigte_old;
+                }
             }
             let keys = Array.from(oldDataMapCopy.keys()).sort();
             for (let key of keys) {
